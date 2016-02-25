@@ -1,26 +1,4 @@
 
-
-
-
-
-
-
-import javax.swing.*;
-import images.*;
-import java.io.*;
-
-public class NegativeExample
-{
-	public static void main(String args[])
-	{
-		JFileChooser fc = new JFileChooser();
-		fc.showOpenDialog(null);							//Prompt user to select a file
-		File file = fc.getSelectedFile();					//Get the file selected by the user
-		if (file == null)
-			System.exit(0);									//Close if no file was selected
-		APImage img = new APImage(file.getPath());	//Load the image
-		APImage resizedImage = new APImage(img.getWidth() / 3, img.getHeight() / 3);
-
 		int redAverage;
       		int greenAverage;
       		int blueAverage;
