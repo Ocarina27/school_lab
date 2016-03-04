@@ -25,7 +25,7 @@ public class RocketShip extends Applet
 {
 	public void paint(Graphics g)
 	{
-		RocketShip opollo = new RocketShip(g);
+		Rocket opollo = new Rocket(g);
 	}
 }
 
@@ -35,50 +35,33 @@ class Rocket
 	public Rocket(Graphics g)
 	{
 		g.setColor(Color.red);
-		g.fillOval(200,100,400,450);
-		g.setColor(Color.blue);
-		g.fillRect(390,30,20,80);
+		g.fillOval(300,100,200,600);
 	}	
+
+   public void Features(Graphics g)
+   {
+      drawFins(g);
+      drawBody(g);
+   }
+   
+   public void drawFins(Graphics g)
+   {
+      Polygon fins = new Polygon();
+		fins.addPoint(350,340);
+		fins.addPoint(450,340);
+		fins.addPoint(400,270);
+		g.fillPolygon(fins);
+   }
+   
+   public void drawBody(Graphics g)
+   {
+      g.fillOval(200,200,100,100);
+   }
+
 }
-
-
 class RocketFeatures
 {
-	
-	public RocketFeatures(Graphics g)
-	{
-		drawFins(g);
-		drawBody(g);
-		drawMouth(g);
-	}	
-	
-	public void drawFins(Graphics g)
-	{
-		g.setColor(Color.black);
-		g.fillOval(200,200,100,100);
-		g.fillOval(500,200,100,100);
-	}
-	public void drawBody(Graphics g)
-	{
-		Polygon nose = new Polygon();
-		nose.addPoint(350,340);
-		nose.addPoint(450,340);
-		nose.addPoint(400,270);
-		g.fillPolygon(nose);
-	}
-	
-	public void drawMouth(Graphics g)
-	{
-		Polygon mouth = new Polygon();
-		mouth.addPoint(300,400);
-		mouth.addPoint(200,350);
-		mouth.addPoint(250,450);
-		mouth.addPoint(400,500);
-		mouth.addPoint(550,450);
-		mouth.addPoint(600,350);
-		mouth.addPoint(500,400);
-		g.fillPolygon(mouth);
-	}
+
 }
 class Rocketship extends Rocket
 {
@@ -87,6 +70,6 @@ class Rocketship extends Rocket
 	public Rocketship(Graphics g)
 	{
 		super(g);
-		rf = new Face(g);
+		rf = new Rocket(g);
 	}	
 }
