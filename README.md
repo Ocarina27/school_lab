@@ -21,11 +21,11 @@ import java.awt.*;
 import java.applet.*;
 
 
-public class RocketShip extends Applet
+public class RocketShipLab extends Applet
 {
 	public void paint(Graphics g)
 	{
-		Rocket opollo = new Rocket(g);
+		Rocket opollo = new Rocketship(g);
 	}
 }
 
@@ -34,42 +34,62 @@ class Rocket
 {
 	public Rocket(Graphics g)
 	{
-		g.setColor(Color.red);
-		g.fillOval(300,100,200,600);
-	}	
+		drawBody(g);
+	   drawFin1(g);
+      drawFin2(g);
+   }
+   
+   public void drawFin1(Graphics g)
+   {
+      Polygon fin1 = new Polygon();
+      g.setColor(Color.blue);
+		fin1.addPoint(225,620); //left up
+		fin1.addPoint(225,720); //left down
+		fin1.addPoint(350,600); //right down
+		fin1.addPoint(350,475); //right up
+		g.fillPolygon(fin1);
+   }
+   
+   public void drawFin2(Graphics g)
+   {
+      Polygon fin2 = new Polygon();
+      g.setColor(Color.blue);
+		fin2.addPoint(575,620); //right up
+		fin2.addPoint(575,720); //right down
+		fin2.addPoint(450,600); //left down
+		fin2.addPoint(450,475); //left up
+		g.fillPolygon(fin2);
+   }
 
-   public void Features(Graphics g)
-   {
-      drawFins(g);
-      drawBody(g);
-   }
-   
-   public void drawFins(Graphics g)
-   {
-      Polygon fins = new Polygon();
-		fins.addPoint(350,340);
-		fins.addPoint(450,340);
-		fins.addPoint(400,270);
-		g.fillPolygon(fins);
-   }
-   
    public void drawBody(Graphics g)
    {
-      g.fillOval(200,200,100,100);
-   }
+      g.setColor(Color.red);
+		g.fillOval(300,100,200,600);
+	}
 
+	
 }
-class RocketFeatures
-{
 
-}
 class Rocketship extends Rocket
 {
-	private RocketFeatures rf;
+	private Rocket r;
 	
 	public Rocketship(Graphics g)
 	{
 		super(g);
-		rf = new Rocket(g);
+		r = new Rocket(g);
+      
 	}	
+   
+   public void drawPorthole(Graphics g)
+   {
+      g.setColor(Color.white);
+      g.fillOval(350,300,100,100);
+   }
+   
+   public void drawLadder(Graphics g)
+   {
+      g.drawRect(360,310,10,410);
+      g.drawRect(360,310,10,410);
+   }
 }
