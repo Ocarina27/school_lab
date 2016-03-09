@@ -21,8 +21,12 @@ import java.awt.*;
 import java.applet.*;
 
 
-public class RocketShipLab extends Applet
-{
+public class RocketShip extends Applet
+{  
+   public static void main(String args[])
+   {
+   
+   }
 	public void paint(Graphics g)
 	{
 		Rocket opollo = new Rocketship(g);
@@ -34,9 +38,19 @@ class Rocket
 {
 	public Rocket(Graphics g)
 	{
-		drawBody(g);
-	   drawFin1(g);
+		g.setColor(Color.red);
+		g.fillOval(300,100,200,600);
+	}	
+}
+
+
+class RocketFeatures
+{
+   public RocketFeatures(Graphics g)
+   {
+      drawFin1(g);
       drawFin2(g);
+      drawBody(g);
    }
    
    public void drawFin1(Graphics g)
@@ -63,33 +77,18 @@ class Rocket
 
    public void drawBody(Graphics g)
    {
-      g.setColor(Color.red);
-		g.fillOval(300,100,200,600);
-	}
+      g.setColor(Color.white);
+      g.fillOval(350,300,100,100);
+   }
 
-	
 }
-
 class Rocketship extends Rocket
 {
-	private Rocket r;
+	private RocketFeatures rs;
 	
 	public Rocketship(Graphics g)
 	{
 		super(g);
-		r = new Rocket(g);
-      
+		rs = new RocketFeatures(g);
 	}	
-   
-   public void drawPorthole(Graphics g)
-   {
-      g.setColor(Color.white);
-      g.fillOval(350,300,100,100);
-   }
-   
-   public void drawLadder(Graphics g)
-   {
-      g.drawRect(360,310,10,410);
-      g.drawRect(360,310,10,410);
-   }
 }
